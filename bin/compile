@@ -1,0 +1,16 @@
+#!/bin/bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+working=$(pwd)
+mkdir -p "$2"
+build=$(cd "$1/" && pwd)
+cache=$(cd "$2/" && pwd)
+env=$(cd "$3/" && pwd)
+
+curl -O "${S3_BUCKET}/${MODEL_FILE}"
+mv $MODEL_FILE src/etc/model/
+
+curl -O "${S3_BUCKET}/${DICT_FILE}"
+mkdir -p dict
+mv ${DICT_FILE} dict/
+unzip dict/${DICT_FILE}
