@@ -7,9 +7,11 @@ build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
 env=$(cd "$3/" && pwd)
 
+echo "download from ${S3_BUCKET}/${MODEL_FILE}"
 curl -O "${S3_BUCKET}/${MODEL_FILE}"
 mv $MODEL_FILE src/etc/model/
 
+echo "download from ${S3_BUCKET}/${DICT_FILE}"
 curl -O "${S3_BUCKET}/${DICT_FILE}"
 mkdir -p dict
 mv ${DICT_FILE} dict/
