@@ -6,6 +6,9 @@ mkdir -p "$2"
 build=$(cd "$1/" && pwd)
 cache=$(cd "$2/" && pwd)
 env=$(cd "$3/" && pwd)
+S3_BUCKET=https://menthas.s3-ap-northeast-1.amazonaws.com
+DICT_FILE=dict.zip
+MODEL_FILE=wiki-deepwalk.model
 
 echo "download from ${S3_BUCKET}/${MODEL_FILE}"
 curl -O "${S3_BUCKET}/${MODEL_FILE}"
