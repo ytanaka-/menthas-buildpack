@@ -2,18 +2,26 @@
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
 S3_BUCKET=https://menthas.s3-ap-northeast-1.amazonaws.com
-DICT_FILE=dict.zip
 MODEL_FILE=wiki-deepwalk.model
 
 cd $1
-echo $(pwd)
-echo $(ls)
+
 echo "download from ${S3_BUCKET}/${MODEL_FILE}"
 curl -O "${S3_BUCKET}/${MODEL_FILE}"
+mkdir -p src/etc/model
 mv $MODEL_FILE src/etc/model/
 
-echo "download from ${S3_BUCKET}/${DICT_FILE}"
-curl -O "${S3_BUCKET}/${DICT_FILE}"
-mkdir -p dict
-mv ${DICT_FILE} dict/
-unzip dict/${DICT_FILE}
+echo "download from ${S3_BUCKET} dict files"
+mkdir -p dict & cd dict 
+curl -O "${S3_BUCKET}/dict/base.dat.gz"
+curl -O "${S3_BUCKET}/dict/cc.dat.gz"
+curl -O "${S3_BUCKET}/dict/check.dat.gz"
+curl -O "${S3_BUCKET}/dict/tid_map.dat.gz"
+curl -O "${S3_BUCKET}/dict/tid_pos.dat.gz"
+curl -O "${S3_BUCKET}/dict/tid.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk_char.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk_compat.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk_invoke.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk_map.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk_pos.dat.gz"
+curl -O "${S3_BUCKET}/dict/unk.dat.gz"
