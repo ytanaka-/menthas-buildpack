@@ -12,7 +12,8 @@ mkdir -p src/etc/model
 mv $MODEL_FILE src/etc/model/
 
 echo "download from ${S3_BUCKET} dict files"
-mkdir -p dict && cd dict 
+mkdir -p dict
+cd dict
 
 curl -O "${S3_BUCKET}/dict/base.dat.gz"
 curl -O "${S3_BUCKET}/dict/cc.dat.gz"
