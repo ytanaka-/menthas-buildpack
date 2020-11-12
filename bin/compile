@@ -12,10 +12,10 @@ MODEL_FILE=wiki-deepwalk.model
 
 echo "download from ${S3_BUCKET}/${MODEL_FILE}"
 curl -O "${S3_BUCKET}/${MODEL_FILE}"
-mv $MODEL_FILE src/etc/model/
+mv $MODEL_FILE ${build}/src/etc/model/
 
 echo "download from ${S3_BUCKET}/${DICT_FILE}"
 curl -O "${S3_BUCKET}/${DICT_FILE}"
-mkdir -p dict
-mv ${DICT_FILE} dict/
-unzip dict/${DICT_FILE}
+mkdir -p ${build}/dict
+mv ${DICT_FILE} ${build}/dict/
+unzip ${build}/dict/${DICT_FILE}
