@@ -13,3 +13,4 @@ echo "download from ${S3_BUCKET} dict files"
 curl -O "${S3_BUCKET}/dict.zip"
 mkdir -p dict
 unzip -o dict.zip -d dict
+rm dict.zip
