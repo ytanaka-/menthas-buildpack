@@ -12,4 +12,4 @@ curl -O "${S3_BUCKET}/${MODEL_FILE}"
 echo "download from ${S3_BUCKET} dict files"
 curl -O "${S3_BUCKET}/dict.zip"
 mkdir -p dict
-unzip dict.zip -d dict
+unzip dict.zip -d dict -o
